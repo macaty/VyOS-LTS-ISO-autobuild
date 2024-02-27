@@ -28,8 +28,10 @@ jobs:
       - name: Build ISO
         working-directory: ./vyos-build
         run: |
-          ./configure --architecture $ARCHITECTURE --build-by $BUILD_BY --build-type $BUILD_TYPE --version $VERSION
-          sudo make iso
+          sudo make clean
+          #./configure --architecture $ARCHITECTURE --build-by $BUILD_BY --build-type $BUILD_TYPE --version $VERSION
+          sudo ./build-vyos-image iso --architecture $ARCHITECTURE --build-by $BUILD_BY --build-type $BUILD_TYPE --version $VERSION
+          #sudo make iso
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
